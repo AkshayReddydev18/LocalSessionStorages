@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- <script src="local.js"></script> -->
+    <style>
+      fieldset {
+        width: 300px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="akshay">
+      <fieldset>
+        <legend>Local Storage</legend>
+        <label for="username">UserName:</label>
+        <input type="text" id="username" /><br />
+        <br />
+        <label for="pswd">Password:</label>
+        <input type="password" id="pswd" />
+        <br /><br />
+        <input type="reset" />
+        <input type="submit" />
+      </fieldset>
+    </form>
+
+    <fieldset>
+      <legend>Retrieve Local Storage Data</legend>
+      <button id="btn">Retrieve</button>
+      <p id="p1"></p>
+      <p id="p2"></p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Retrieve Session Storage Data</legend>
+      <button id="btnn">Retrieve</button>
+      <p id="p3"></p>
+      <p id="p4"></p>
+    </fieldset>
+
+    <script>
+      let formm = document.getElementById("akshay");
+      let username = document.getElementById("username");
+      let password = document.getElementById("pswd");
+
+      // let array = "";
+      // let array1 = "";
+      formm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        let a = localStorage.setItem("username", username.value);
+        let b = localStorage.setItem("password", password.value);
+        let c = sessionStorage.setItem("username", username.value);
+        let d = sessionStorage.setItem("password", password.value);
+      });
+      let btn = document.getElementById("btn");
+      let p1 = document.getElementById("p1");
+      let p2 = document.getElementById("p2");
+
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let p11 = localStorage.getItem("username");
+        let p22 = localStorage.getItem("password");
+        p1.innerHTML = p11;
+        p2.innerHTML = p22;
+      });
+
+      let btnn = document.getElementById("btnn");
+      let p3 = document.getElementById("p3");
+      let p4 = document.getElementById("p4");
+
+      btnn.addEventListener("click", (e) => {
+        e.preventDefault();
+        let p33 = sessionStorage.getItem("username");
+        let p44 = sessionStorage.getItem("password");
+        p3.innerHTML = p33;
+        p4.innerHTML = p44;
+      });
+    </script>
+  </body>
+</html>
